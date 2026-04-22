@@ -1,0 +1,49 @@
+Python learning>>>POM>>>Framework>>step_by_step>>Ecommerce website-https://automationexercise.com/
+
+1. make folder right clik>>>>opn with terminal>> in cmd>> go to this folder>> wright code . Enter>> this will opn this folder in vs code.
+
+2. Now create environment>>in terminal>> python -m venv myenv(here we can write any name, that will be our env name)
+
+3. To activate environment>> myenv\Scripts\activate
+
+4. to install browser>>  playwright install
+
+in conftest file mai add krte hai
+
+from playwright.sync_api import sync_playwright
+playwright → ek automation library hai (browser control karne ke liye)
+sync_api → simple (line-by-line) tarike se code likhne ke liye
+sync_playwright → ek function hai jo browser start karne me help karta hai
+
+email id- gamma1@gmail.com
+
+new maild  id- bulbul1@gmail.com- pw- Bulbul@1
+
+
+ab is case mai first we created
+
+1. conftest.py- is mai hm fixture rakhe hai jo browser bana raha hai, isme context means window and page bana raha hai
+ye page url tak jayega and yaha pause ho jyega. (Yield means pause hota hai jo is page ko test file mai bhejti hai, waha test execute hota hai) , fir session close hota hai and browser close.
+
+is fixture ka scope function tak hai, means har function ke liye ek new window bnegi and execute hogi.
+
+
+2. Base_page- Ab base page mai hum constructor bnayege, jaise hi test file mai class ka object bnage ye automatically call hoga. class BasePage:
+    def __init__(self, page):
+        self.page= page
+
+aur yaha humne ussi page ko store kia hai jo fixture se mila hai, 
+bcz ye base page humare mail login page me inherit hoga, aur ye page yaha store hua hai to matlab hai login page mai bh hm page use kar skte hai
+like humae test file mai humne likha hai
+
+def test_nevi(page):
+    print("Test started")
+    data= read_json("login.json")
+    print("DATA:", data)
+    nevi= LoginPage(page)------ yaha iss line mai Loginpage mai humne page ko add kia hai, means ab login page ki activity is page p ho skti hai, login isse access kar sakta hai.
+
+
+yaha test file mai jaise hi test function bana wo fixture activate hua test se Pehle, now ab yaha test mai jaise class ka object bna waha constructor call hua. 
+
+
+
