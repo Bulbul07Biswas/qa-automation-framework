@@ -14,8 +14,9 @@ class LoginPage(BasePage):
     
   def valid_login(self,email,password):
       self.page.locator(Locators.Signup_login).click()
-      self.page.wait_for_timeout(1000)
+    #   self.page.wait_for_timeout(1000)
       
+      expect(self.page.locator(Locators.User_email)).to_be_visible()
       email_field=self.page.locator(Locators.User_email)
       email_field.clear()
       email_field.fill(email) 
