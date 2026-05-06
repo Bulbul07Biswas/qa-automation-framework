@@ -68,4 +68,4 @@ def pytest_runtest_makereport(item, call):
             page.screenshot(path=file_name)
 
             print(f"\nScreenshot saved at: {file_name}")
-
+            
