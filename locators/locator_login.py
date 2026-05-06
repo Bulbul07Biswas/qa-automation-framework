@@ -51,4 +51,4 @@ class Locators:
     expire_date='//input[@class="form-control card-expiry-month"]' 
     expire_year='//input[@class="form-control card-expiry-year"]'
     confirm_order='//button[@class="form-control btn btn-primary submit-button"]'
-    # success_notification= ".alert-success"
+    success_notification= ".alert-success"

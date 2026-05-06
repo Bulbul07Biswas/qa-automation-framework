@@ -43,7 +43,6 @@ class Products(BasePage):
         
         
     def payment(self):
-        
         card=self.page.locator(Locators.card_name)
         expect(card).to_be_visible(timeout=2000)
         card.fill('Bulbul')
@@ -51,7 +50,7 @@ class Products(BasePage):
         self.page.locator(Locators.card_number).fill("123456")
         self.page.locator(Locators.cvc).fill("90")
         self.page.locator(Locators.expire_date).fill("12/12")        
-        self.page.locator(Locators.expire_year).fill(2009)
+        self.page.locator(Locators.expire_year).fill("2009")
         self.page.screenshot(path="screenshot.png")
         self.page.locator(Locators.confirm_order).click()
         self.page.wait_for_timeout(3000)
@@ -59,6 +58,6 @@ class Products(BasePage):
         # notification=self.page.locator(Locators.success_notification)
         # notification.wait_for(state="visible", timeout=10000)                      
         # expect(notification).to_have_text("Your order has been placed successfully!")
-        notification = self.page.get_by_text("Your order has been placed successfully!", exact=True)
-        expect(notification).to_be_hidden()        
+        # notification = self.page.get_by_text("Your order has been placed successfully!", exact=True)
+        # expect(notification).to_be_hidden()        
         

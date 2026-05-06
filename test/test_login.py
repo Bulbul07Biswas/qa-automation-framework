@@ -3,7 +3,7 @@
 from pages.login_page import LoginPage
 from pages.home_page import HomePage
 from pages.products_page import Products
-from playwright.sync_api import expect
+# from playwright.sync_api import expect
 from utils.read_data import read_json 
 from pages.base_page import BasePage
 
