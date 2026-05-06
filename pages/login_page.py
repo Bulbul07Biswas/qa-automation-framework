@@ -5,28 +5,11 @@
 from playwright.sync_api import expect
 from pages.base_page import BasePage
 from locators.locator_login import Locators
+from utils.read_data import read_json 
 
 class LoginPage(BasePage):
-    
-#   def navigate(self):
-#     self.page.goto("https://automationexercise.com/")
-    
-    
-  def valid_login(self,email,password):
-      self.page.locator(Locators.Signup_login).click()
-    #   self.page.wait_for_timeout(1000)
-      
-      expect(self.page.locator(Locators.User_email)).to_be_visible()
-      email_field=self.page.locator(Locators.User_email)
-      email_field.clear()
-      email_field.fill(email) 
+  
 
-      password_field=self.page.get_by_placeholder(Locators.User_password)
-      password_field.clear()
-      password_field.fill(password)
-      
-      self.page.locator(Locators.Login_button).click()
-    
   def login_successfull(self):
       logout= self.page.get_by_role("link", name='Logout')
       
@@ -36,8 +19,7 @@ class LoginPage(BasePage):
       except:
           print("Invalid attempt")
        
-        
-    
-    
+  def login_failed(self):
+      expect(self.page.locator(Locators.invalid_login_msg)).to_be_visible()
       
       

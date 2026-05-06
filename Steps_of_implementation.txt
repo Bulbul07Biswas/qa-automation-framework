@@ -1,3 +1,5 @@
+
+Step1
 Python learning>>>POM>>>Framework>>step_by_step>>Ecommerce website-https://automationexercise.com/
 
 1. make folder right clik>>>>opn with terminal>> in cmd>> go to this folder>> wright code . Enter>> this will opn this folder in vs code.
@@ -8,8 +10,22 @@ Python learning>>>POM>>>Framework>>step_by_step>>Ecommerce website-https://autom
 
 4. to install browser>>  playwright install
 
-in conftest file mai add krte hai
 
+2. Step2-
+
+in conftest file mai add krte hai
+COnftest mai hum fixture banate hai, means jo repeatative floe ho like login, ya sceenshot lena ho each faliare pr
+ so is file mai hum pahle browser launch krwayege, 
+
+ for this>>>
+ 1. browser bnayege means yaha hm browser select krte hai which one
+ 2. now create context , means is chrome/firefox k liye ek window opn karwa rahe hai
+ 3. now create page, yaha hm us context mai new page opn krwa rahe hai
+ 4. now ab ye page har jagah kaam karega, its like hero of aour framework.
+ 5. jaha2 need ho waha we pass it as agrumnet in func
+_________________________________________________________________________
+
+ye line add krege conftest mai
 from playwright.sync_api import sync_playwright
 playwright → ek automation library hai (browser control karne ke liye)
 sync_api → simple (line-by-line) tarike se code likhne ke liye
@@ -26,11 +42,17 @@ ab is case mai first we created
 ye page url tak jayega and yaha pause ho jyega. (Yield means pause hota hai jo is page ko test file mai bhejti hai, waha test execute hota hai) , fir session close hota hai and browser close.
 
 is fixture ka scope function tak hai, means har function ke liye ek new window bnegi and execute hogi.
+---------------------------------------------------------------------------------------------------------
 
+3. Step3
 
 2. Base_page- Ab base page mai hum constructor bnayege, jaise hi test file mai class ka object bnage ye automatically call hoga. class BasePage:
     def __init__(self, page):
         self.page= page
+
+Self ka kaam ye hota hai ye apne class ya fun k object ko define karta hai, if we dont use self to ye
+class k object use nahi karne dega
+
 
 aur yaha humne ussi page ko store kia hai jo fixture se mila hai, 
 bcz ye base page humare mail login page me inherit hoga, aur ye page yaha store hua hai to matlab hai login page mai bh hm page use kar skte hai
@@ -45,5 +67,59 @@ def test_nevi(page):
 
 yaha test file mai jaise hi test function bana wo fixture activate hua test se Pehle, now ab yaha test mai jaise class ka object bna waha constructor call hua. 
 
+----------------------------------------------------------------------------------------------------
+
+step4-
+now ab create locator, yaha hum locator ki seperate file bnayege
+---------------------------------------------------------------------------------------------------
 
 
+
+
+
+
+Helpful syntext
+
+1. when locator is not on screen, want to scroll down till element and perform action
+
+ >>> element = self.page.locator(Locators.your_element)
+     element.scroll_into_view_if_needed()
+     element.click()
+
+2. Jab kisi link ya redirection check krna hai wait lagakar ki wo redirect hua h ya nahi
+ >>> self.page.wait_for_url("**/https//....")
+
+
+3. jb koi tab ya button ki link ho to how to get locator
+
+1a. ex. "https://www.globalsqa.com/demo-site/accordion-and-tabs/" ye link hai , so iska last path like
+accordion-and-tabs pick krege and locator hoga
+
+ >>> tabs_link = "a[href*='accordion-and-tabs']" -bcz ye anchor tab mai hoga isiliye 'a' 
+
+2.a ex. if link k sath text bhi ho so will pick below, yaha 'Taabs' text hai
+
+ye html syntex hai
+"<a href="https://www.globalsqa.com/demo-site/accordion-and-tabs/" 
+class="button tiny_button button_pale regular_text">Tabs</a>"
+
+>>> tabs_link = "a:has-text('Tabs')"
+
+4. if u have id and text in same tag so, yaha h3 tag hai your id mai, id ayegi , text mai text
+heading = "h3#your_id:has-text('Your Text')"
+
+
+5. iframe- iframe means kisi frame k andr dusra page, or like ek kisis website pr youtuebe ka option
+
+to handle this- pehle find iframe of that element(usk container dekho)
+
+iframe k locator ko kisi element mai store karo
+ex. iframe = '#regf_shd' >>like ye loctor hai
+iframe.locator(Locators.element).click()  >> yaha element wo element hai jispr action perform karn hai
+
+
+
+
+Error type
+
+1. Strict mode violation- occurs when a locator matches multiple elements.

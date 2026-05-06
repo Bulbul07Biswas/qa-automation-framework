@@ -2,5 +2,12 @@
   "valid_login": {
     "email": "Bulbul@1",
     "password": "Bulbul@1"
+  },
+
+
+  "invalid_login":{
+   "email": "Test@08",
+   "password":"test123"
+
   }
 }
