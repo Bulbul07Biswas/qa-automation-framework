@@ -31,11 +31,11 @@ def test_invalid_login(page):
     data["invalid_login"]["password"]
                      )
    
-# def test_saree_product(login):
-#     product= Products(login)
-#     product.saree()
-#     product.checkout()
-#     product.payment()
+def test_saree_product(login):
+    product= Products(login)
+    product.saree()
+    product.checkout()
+    product.payment()
 
 
 
