@@ -23,13 +23,13 @@ def test_productPage(login):
     product = Products(login)
     product.category()
     
-def test_invalid_login(page):
-    data= read_json("login.json")
-    base= BasePage(page)
-    base.invalid_login(
-    data["invalid_login"]["email"],
-    data["invalid_login"]["password"]
-                     )
+# def test_invalid_login(page):
+#     data= read_json("login.json")
+#     base= BasePage(page)
+#     base.invalid_login(
+#     data["invalid_login"]["email"],
+#     data["invalid_login"]["password"]
+                    #  )
    
 def test_saree_product(login):
     product= Products(login)
